@@ -1,22 +1,31 @@
 import React, { Component } from 'react';
+
 import addUser from '../actions/users'
+
 
 class UserInput extends Component {
   constructor(props){
     super(props)
-    this.state = {userName: '', hometown: ''}
+    this.state = {
+      userName: '',
+      hometown: ''
+    }
   }
+
   handleOnUserNameChange(event){
     this.setState({userName: event.target.value})
   }
+
   handleOnHometownChange(event){
     this.setState({hometown: event.target.value})
   }
+
   handleOnSubmit(event){
     event.preventDefault()
-
-    this.props.store.dispatch(addUser(this.state))
+    this.props.store.dispatch(addUser(this.state.user))
   }
+
+
   render(){
     return(
       <form onSubmit={this.handleOnSubmit.bind(this)}>
@@ -31,5 +40,6 @@ class UserInput extends Component {
     )
   }
 }
+
 
 export default UserInput;
